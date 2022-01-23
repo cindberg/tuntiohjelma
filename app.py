@@ -1,6 +1,4 @@
-from tkinter import *
 from flask import Flask
-from flask import Blueprint
 
 app = Flask(__name__)
 
