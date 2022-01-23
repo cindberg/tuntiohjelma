@@ -11,7 +11,7 @@ def koti():  # etusivu
 
 def ominaisuudet(): #featuret
 
-    return 'Ominaisuudet'
+    return 'Ominaisuudet!'
 
 
 
