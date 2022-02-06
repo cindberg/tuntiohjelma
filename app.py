@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, jsonify, request, session,redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import timedelta
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -26,4 +28,4 @@ db = SQLAlchemy(app)
 
 if __name__ == "__main__":
     from nakyma import *
-    app.run(debug=True)
+    app.run(debug=True, port='5001')
