@@ -1,0 +1,30 @@
+{% extends "layout.html"%}
+{% block content %}
+<form method = "POST" action="{{ url_for('login') }}">
+    <div class="viesti">{{ viesti }}</div>
+    <h3 align="center">Kirjaudu</h3>
+    <div class="form-group">
+        <label for="tunnus">Tunnus</label>
+        <input type="tunnus"
+               class="form-control"
+               id="tunnus"
+               name="username"
+               placeholder="Tunnus">
+    </div>
+
+    <div class="form-group">
+        <label for="Salasana">Salasana</label>
+        <input
+                type="password"
+                class="form-control"
+                id="Salasana1"
+                name="password"
+                placeholder="*********">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kirjaudu</button>
+    <p class="bottom">Eikö sinulla ole käyttäjää?  <a class="bottom" href="{{url_for('login')}}"> Rekisteröidy tästää</a></p>
+</form>
+
+{% endblock %}

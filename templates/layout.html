@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- meta tagit -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+
+    {% if title %}
+    <title>Työajan hallinta - {{ title }}</title>
+    {% else %}
+    <title>Työajan hallinta</title>
+    {% endif %}
+
+</head>
+
+<body>
+    <!-- navigaatiobaari bootsrap luokilla-->
+
+    <header class="sivun-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <h1 class="text-info">Työajan hallinta</h1>
+
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" id="Calendar" href="/task">Kalenteri</a>
+                        <a class="nav-item nav-link" id="about" href="/about">Tietoa</a>
+                    </div>
+
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" id="login" href="/login">Kirjaudu</a>
+                        <a class="nav-item nav-link" id="register" href="/register">Rekisteröidy</a>
+                        <a class="nav-item nav-link" id="out" href="/logout">Ulos</a>
+                        <a class="nav-item nav-link" id="home" href="/home">Etusivu</a>
+                    </div>
+                    <span class="navbar-text">
+                        {% if username %}
+                        <title>Tervetuloa - {{ username }}</title>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+    <!-- navigaatiobaari bootsrap luokilla lisäsin hieman bootstrappia jotta se näyttäisi selkeämmältä-->
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% block content %}{% endblock %}
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
