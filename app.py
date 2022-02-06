@@ -22,9 +22,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # hiljentää muistutukset,
 app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=60) #(turha lisä voi poistaa)
 CORS(app)
 
+
 db = SQLAlchemy(app)
-
-
 
 if __name__ == "__main__":
     from nakyma import *
