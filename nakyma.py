@@ -1,6 +1,8 @@
-from flask import request, session,redirect, render_template, url_for
-from index import Account
-from app import app
+from flask import render_template, request, Response
+from flask import Flask, jsonify, request, session,redirect, render_template, url_for
+from index import Account, create_account
+from werkzeug.security import generate_password_hash, check_password_hash
+from app import app,db
 
 
 
@@ -36,7 +38,7 @@ def getacc():
 
 @app.route('/login', methods =['GET', 'POST'])
 def login():
-    viesti = ''
+    msg = ''
     if session and session['username']:
         print(session['username'])
         return redirect(url_for('home', username=session['username']))
@@ -47,24 +49,56 @@ def login():
 
         account = Account.query.filter_by(username=username).first()
 
-        if account(account.password, password):
+        if account and check_password_hash(account.password, password):
             session['username'] = username
-            viesti = 'Kirjauduit onnistuneesti!'
+            msg= 'Kirjauduit onnistuneesti!'
             return redirect(url_for('home', username=username))
         else:
-            viesti = 'Incorrect username / password !'
-    return render_template('login.html', viesti=viesti)
+            msg = 'Incorrect username / password !'
+    return render_template('login.html', msg=msg)
     
-
-
-
-
 
 @app.route('/logout')
 def logout():
     if 'username' in session:
         session.pop('username', None)
     return render_template('out.html')
+
+
+
+@app.route('/register', methods =['GET','POST'])
+def register():
+    msg = ''
+    carbrands = [
+        {
+            'brand_id': 1,
+            'brand_name': 'Työntekijä'
+        },
+        {
+            'brand_id': 2,
+            'brand_name': 'Projektipäällikkö'
+        }
+    ]
+    if 'username' in request.form and 'password' in request.form:
+        username = request.form['username']
+        password = generate_password_hash(request.form['password'])
+        roletype = request.form['search_category']
+        #etsitään oikea roolityyppi
+        account = Account.query.filter_by(username=username).first()
+        if account:
+            msg= 'Tili on jo olemassa!'
+        else:
+
+            account = create_account(username, password, roletype)
+            msg = 'Olet onnistuneesti rekisteröitynyt!'
+            print(account)
+    else:
+        msg = 'Rekisteröidy!'
+
+    return render_template('register.html', carbrands=carbrands, msg=msg)
+
+
+
 
 
 

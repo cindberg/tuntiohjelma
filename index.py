@@ -1,5 +1,6 @@
 from app import db
-
+from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, DateTime
 
 class Account(db.Model):
     # id
@@ -17,6 +18,17 @@ class Account(db.Model):
     def __str__(self):
         return self.username
     
+def create_account(new_username, new_password, new_roletype):
+
+    account = Account(new_username, new_password, new_roletype)
+
+    # lisäätään tämä tietokantaan
+    db.session.add(account)
+
+    # tallentaa kaikki muutokset
+    db.session.commit()
+
+    return account
 
 
 if __name__ == "__main__":

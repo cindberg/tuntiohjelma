@@ -1,7 +1,7 @@
 {% extends "layout.html"%}
 {% block content %}
 <form method = "POST" action="{{ url_for('login') }}">
-    <div class="viesti">{{ viesti }}</div>
+    <div class="msg">{{ msg }}</div>
     <h3 align="center">Kirjaudu</h3>
     <div class="form-group">
         <label for="tunnus">Tunnus</label>
@@ -24,7 +24,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Kirjaudu</button>
-    <p class="bottom">Eikö sinulla ole käyttäjää?  <a class="bottom" href="{{url_for('login')}}"> Rekisteröidy tästää</a></p>
+    <p class="bottom">Eikö sinulla ole käyttäjää?<a class="bottom" href="{{url_for('login')}}"> Rekisteröidy tästää</a></p>
 </form>
 
 {% endblock %}
