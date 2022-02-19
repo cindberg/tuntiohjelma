@@ -6,7 +6,7 @@ class Account(db.Model):
     # id
     __tablename__ = 'account'
     id = db.Column(db.Integer, primary_key=True)
-    # turhat asiat
+    # useless stuff
     username = db.Column(db.String(100))
     password = db.Column(db.Text)
     roletype = db.Column(db.String(100))
@@ -15,6 +15,7 @@ class Account(db.Model):
         self.username = username
         self.password = password
         self.roletype = roletype
+
     def __str__(self):
         return self.username
     
@@ -22,10 +23,10 @@ def create_account(new_username, new_password, new_roletype):
 
     account = Account(new_username, new_password, new_roletype)
 
-    # lisäätään tämä tietokantaan
+        # adds to db
     db.session.add(account)
 
-    # tallentaa kaikki muutokset
+        # saves all pending changes to the db
     db.session.commit()
 
     return account
@@ -33,7 +34,7 @@ def create_account(new_username, new_password, new_roletype):
 
 if __name__ == "__main__":
 
-    # Aja tämä ohjelma ensin jotta voit luoda tietokantaan pöydät
-    print("luo pöytiä...")
+    # We should run this file directly to create the database tables
+    print("Creating tables...")
     db.create_all()
-    print("tehty!")
+    print("Done!")

@@ -30,7 +30,7 @@ def getacc():
     accounts = Account.query.all()
     for i in accounts:
         print(i)
-    return "toimiiko?"
+    return "Test a"
 
 
 
