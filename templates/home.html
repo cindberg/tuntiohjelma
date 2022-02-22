@@ -1,7 +1,40 @@
 {% extends "layout.html"%}
 {% block content %}
 <h4 class='bg-dark text-white'>Tervetuloa {{username}} - Rooli: {{role}}</h4>
-<h3>Ajanhallinta tiimille</h3>
+<h3>Työajanseuranta sovellus</h3>
+<form method="POST" action="{{ url_for('home') }}">
+    <div class="msg">{{ msg }}</div>
+    <div class="form-group">
+        <label for="tunnus">Aloitus päivä</label>
+        <input type="datetime-local" class="form-control" name="schedule">
+    </div>
+
+    <div class="form-group">
+        <label for="plan">Suunniteltu päivä</label>
+        <input type="datetime-local" class="form-control" name="plan">
+    </div>
+
+    <div class="form-group">
+        <label for="end">Loepetuksen päivä</label>
+        <input type="datetime-local" class="form-control" name="end">
+    </div>
+
+    <div class="form-group">
+        <label for="hours">Tunnit</label>
+        <input type="text" class="form-control" name="hours">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Tehtävän nimike</label>
+        <input type="text" class="form-control" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="description">Tehtävän kuvaus</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Luo tehtävä</button>
+</form>
 
 
 {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html"%}
+{% block content %}
+
+<h3 class='text-danger'>Tehtävät:</h3>
+
+<table class="table">
+        <thead class="thead-dark">
+                <tr>
+
+                        <th scope="col">Suunniteltu päivä</th>
+                        <th scope="col">Aloitus päivä</th>
+                        <th scope="col">Lopetuksen päivä</th>
+                        <th scope="col">Tunnit</th>
+                        <th scope="col">Tehtävän nimi</th>
+                        <th scope="col">Tehtävän kuvaus</th>
+                </tr>
+        </thead>
+        <tbody>
+                {% for row in data %}
+                <tr>
+
+                        <td>{{row.planned_date}}</td>
+                        <td>{{row.schedule_date}}</td>
+                        <td>{{row.end_date}}</td>
+                        <td>{{row.hours}}</td>
+                        <td>{{row.task_name}}</td>
+                        <td>{{row.task_description}}</td>
+                </tr>
+                {% endfor %}
+                
+
+        </tbody>
+</table>
+
+
+{% endblock %}

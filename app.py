@@ -19,8 +19,8 @@ DB_URL = 'postgresql+psycopg2://{user}:{password}@{url}/{db}'.format(user=POSTGR
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 app.config['SECRET_KEY'] = 'admin1'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # hiljentää muistutukset, (turha voi poistaa)
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=60)  # (turha lisä voi poistaa)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Sielnces all the notifications ( can be deleted )
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=60)  # Timer, ( Can be deleted )
 CORS(app)
 
 db = SQLAlchemy(app)
