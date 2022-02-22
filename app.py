@@ -10,7 +10,6 @@ load_dotenv()
 app = Flask(__name__)
 
 
-
 POSTGRES_URL = 'localhost'
 POSTGRES_USER = 'postgres'
 POSTGRES_PW = 'admin'

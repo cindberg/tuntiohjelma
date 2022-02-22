@@ -1,7 +1,4 @@
-from calendar import Calendar
-
-from flask import render_template, request, Response
-from flask import Flask, jsonify, request, session, redirect, render_template, url_for
+from flask import request, session, redirect, render_template, url_for
 from index import Account, create_account, Calender
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db
