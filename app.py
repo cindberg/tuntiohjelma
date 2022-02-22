@@ -15,7 +15,7 @@ POSTGRES_URL = 'localhost'
 POSTGRES_USER = 'postgres'
 POSTGRES_PW = 'admin'
 POSTGRES_DB = 'postgres'
-DB_URL = 'postgresql+psycopg2://{user}:{password}@{url}/{db}'.format(user=POSTGRES_USER,
+DB_URL = os.getenv('DATABASE_URL') or 'postgresql+psycopg2://{user}:{password}@{url}/{db}'.format(user=POSTGRES_USER,
                                                                                                   password=POSTGRES_PW,
                                                                                                   url=POSTGRES_URL,
                                                                                                   db=POSTGRES_DB)
