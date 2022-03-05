@@ -7,6 +7,7 @@ from app import app, db
 @app.route('/')
 def index():
     return redirect("/login")
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'GET':
