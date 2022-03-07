@@ -2,9 +2,6 @@ from flask import request, session, redirect, render_template, url_for
 from index import Account, create_account, Calender
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db
-from second import second
-
-app.register_blueprint(second, url_prefix="")
 
 
 @app.route('/')

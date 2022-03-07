@@ -30,4 +30,4 @@ db = SQLAlchemy(app)
 if __name__ == "__main__":
 
     from views import *
-    app.run(debug=True)
+    app.run(debug=True, host="localhost", port=5005)
